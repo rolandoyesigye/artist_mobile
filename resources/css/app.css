@@ -1,0 +1,361 @@
+@import 'tailwindcss';
+
+@import "tw-animate-css";
+@import "@fontsource/jetbrains-mono/index.css";
+
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:is(.dark *));
+
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer utilities {
+  body,
+  html {
+
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+:root {
+    --background: oklch(0.88 0.05 91.79);
+    --foreground: oklch(0.43 0.03 59.22);
+    --card: oklch(0.89 0.04 87.57);
+    --card-foreground: oklch(0.43 0.03 59.22);
+    --popover: oklch(0.94 0.03 89.85);
+    --popover-foreground: oklch(0.43 0.03 59.22);
+    --primary: oklch(0.67 0.11 118.91);
+    --primary-foreground: oklch(0.99 0.01 88.64);
+    --secondary: oklch(0.85 0.06 91.15);
+    --secondary-foreground: oklch(0.43 0.03 59.22);
+    --muted: oklch(0.85 0.06 91.15);
+    --muted-foreground: oklch(0.58 0.03 60.93);
+    --accent: oklch(0.84 0.07 90.33);
+    --accent-foreground: oklch(0.43 0.03 59.22);
+    --destructive: oklch(0.71 0.10 29.98);
+    --destructive-foreground: oklch(0.98 0.01 91.48);
+    --border: oklch(0.69 0.04 59.84);
+    --input: oklch(0.84 0.07 90.33);
+    --ring: oklch(0.73 0.06 130.85);
+    --chart-1: oklch(0.73 0.06 130.85);
+    --chart-2: oklch(0.68 0.06 132.45);
+    --chart-3: oklch(0.82 0.03 136.65);
+    --chart-4: oklch(0.59 0.05 137.62);
+    --chart-5: oklch(0.52 0.04 137.19);
+    --sidebar: oklch(0.86 0.06 90.52);
+    --sidebar-foreground: oklch(0.43 0.03 59.22);
+    --sidebar-primary: oklch(0.73 0.06 130.85);
+    --sidebar-primary-foreground: oklch(0.99 0.01 88.64);
+    --sidebar-accent: oklch(0.92 0.02 88.00);
+    --sidebar-accent-foreground: oklch(0.43 0.03 59.22);
+    --sidebar-border: oklch(0.91 0.02 88.00);
+    --sidebar-ring: oklch(0.73 0.06 130.85);
+    --font-sans: Merriweather, serif;
+    --font-serif: Source Serif 4, serif;
+    --font-mono: JetBrains Mono, monospace;
+    --radius: 0.425rem;
+    --shadow-2xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
+    --shadow-xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
+    --shadow-sm: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 1px 2px -1px hsl(88 22% 35% / 0.15);
+    --shadow: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 1px 2px -1px hsl(88 22% 35% / 0.15);
+    --shadow-md: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 2px 4px -1px hsl(88 22% 35% / 0.15);
+    --shadow-lg: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 4px 6px -1px hsl(88 22% 35% / 0.15);
+    --shadow-xl: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 8px 10px -1px hsl(88 22% 35% / 0.15);
+    --shadow-2xl: 3px 3px 2px 0px hsl(88 22% 35% / 0.38);
+}
+
+.dark {
+    --background: oklch(0.33 0.02 88.07);
+    --foreground: oklch(0.92 0.02 82.12);
+    --card: oklch(0.36 0.02 82.33);
+    --card-foreground: oklch(0.92 0.02 82.12);
+    --popover: oklch(0.36 0.02 82.33);
+    --popover-foreground: oklch(0.92 0.02 82.12);
+    --primary: oklch(0.68 0.06 132.45);
+    --primary-foreground: oklch(0.27 0.01 61.02);
+    --secondary: oklch(0.44 0.02 84.55);
+    --secondary-foreground: oklch(0.92 0.02 82.12);
+    --muted: oklch(0.39 0.02 82.71);
+    --muted-foreground: oklch(0.71 0.02 73.62);
+    --accent: oklch(0.65 0.07 90.76);
+    --accent-foreground: oklch(0.27 0.01 61.02);
+    --destructive: oklch(0.63 0.08 31.30);
+    --destructive-foreground: oklch(0.94 0.02 84.59);
+    --border: oklch(0.44 0.02 84.55);
+    --input: oklch(0.44 0.02 84.55);
+    --ring: oklch(0.68 0.06 132.45);
+    --chart-1: oklch(0.68 0.06 132.45);
+    --chart-2: oklch(0.73 0.06 130.85);
+    --chart-3: oklch(0.59 0.05 137.62);
+    --chart-4: oklch(0.65 0.07 90.76);
+    --chart-5: oklch(0.52 0.04 137.19);
+    --sidebar: oklch(0.33 0.02 88.07);
+    --sidebar-foreground: oklch(0.92 0.02 82.12);
+    --sidebar-primary: oklch(0.68 0.06 132.45);
+    --sidebar-primary-foreground: oklch(0.27 0.01 61.02);
+    --sidebar-accent: oklch(0.65 0.07 90.76);
+    --sidebar-accent-foreground: oklch(0.27 0.01 61.02);
+    --sidebar-border: oklch(0.44 0.02 84.55);
+    --sidebar-ring: oklch(0.68 0.06 132.45);
+    --font-sans: Merriweather, serif;
+    --font-serif: Source Serif 4, serif;
+    --font-mono: JetBrains Mono, monospace;
+    --radius: 0.425rem;
+    --shadow-2xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
+    --shadow-xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
+    --shadow-sm: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 1px 2px -1px hsl(88 22% 35% / 0.15);
+    --shadow: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 1px 2px -1px hsl(88 22% 35% / 0.15);
+    --shadow-md: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 2px 4px -1px hsl(88 22% 35% / 0.15);
+    --shadow-lg: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 4px 6px -1px hsl(88 22% 35% / 0.15);
+    --shadow-xl: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 8px 10px -1px hsl(88 22% 35% / 0.15);
+    --shadow-2xl: 3px 3px 2px 0px hsl(88 22% 35% / 0.38);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+    --font-serif: var(--font-serif);
+
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
+    --shadow-2xs: var(--shadow-2xs);
+    --shadow-xs: var(--shadow-xs);
+    --shadow-sm: var(--shadow-sm);
+    --shadow: var(--shadow);
+    --shadow-md: var(--shadow-md);
+    --shadow-lg: var(--shadow-lg);
+    --shadow-xl: var(--shadow-xl);
+    --shadow-2xl: var(--shadow-2xl);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+
+    }
+
+    body {
+        @apply bg-sidebar text-foreground;
+    }
+}
+
+/*
+  ---break---
+*/
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-sidebar text-foreground;
+  }
+}
+
+/* Add this to ensure sidebar background is applied correctly on mobile */
+@layer utilities {
+  [data-slot="sidebar"],
+  [data-sidebar="sidebar"] {
+    background-color: var(--sidebar-background);
+  }
+
+  /* Ensure sheet content (mobile sidebar) has proper background */
+  .bg-sidebar {
+    background-color: var(--sidebar-background) !important;
+  }
+}
+
+/* Add this to ensure active sidebar items use the primary color */
+@layer utilities {
+  [data-sidebar="menu-button"][data-active="true"],
+  [data-sidebar="menu-sub-button"][data-active="true"] {
+    background-color: var(--sidebar-primary) !important;
+    color: var(--sidebar-primary-foreground) !important;
+  }
+
+  [data-sidebar="menu-button"][data-active="true"] svg,
+  [data-sidebar="menu-sub-button"][data-active="true"] svg {
+    color: var(--sidebar-primary-foreground) !important;
+  }
+}
+
+/* Apply text colors to maintain hierarchy */
+@layer base {
+  body {
+    @apply text-[var(--text-body)];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-[var(--text-primary)];
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+}
+
+/* Add utility classes */
+@layer utilities {
+  .font-mono {
+      font-family: var(--font-mono), "JetBrains Mono", ui-monospace;
+  }
+
+  /* Existing utility classes */
+  .text-navy {
+    color: var(--color-navy);
+  }
+
+  .bg-sand-extra-light {
+    background-color: var(--color-sand-extra-light);
+  }
+}
+
+/* Apply to body */
+@layer base {
+  body {
+    @apply flex flex-col min-h-screen bg-background text-foreground font-sans antialiased leading-tight;
+  }
+}
+
+/* Add gradient utility classes for both light and dark modes */
+@layer utilities {
+  /* Light mode gradients */
+  .bg-gradient-primary {
+    background-image: linear-gradient(to bottom right, var(--primary-gradient-from), var(--primary-gradient-to));
+  }
+
+  .bg-gradient-secondary {
+    background-image: linear-gradient(to bottom right, var(--secondary-gradient-from), var(--secondary-gradient-to));
+  }
+
+  .bg-gradient-accent {
+    background-image: linear-gradient(to bottom right, var(--accent-gradient-from), var(--accent-gradient-to));
+  }
+
+  .bg-card-gradient {
+    background-image: linear-gradient(to bottom right, var(--card-gradient-from), var(--card-gradient-to));
+  }
+
+  .bg-sidebar-gradient {
+    background-image: linear-gradient(to bottom, var(--sidebar-gradient-from), var(--sidebar-gradient-to));
+  }
+
+  .bg-sidebar-primary-gradient {
+    background-image: linear-gradient(to bottom right, var(--sidebar-primary-gradient-from), var(--sidebar-primary-gradient-to));
+  }
+
+  /* Dark mode specific */
+  .dark .bg-gradient-dark {
+    background-image: linear-gradient(to bottom right, var(--bg-gradient-from), var(--bg-gradient-to));
+  }
+
+  /* Apply gradients to specific elements */
+  .dark body {
+    background-image: linear-gradient(to bottom right, var(--bg-gradient-from), var(--bg-gradient-to));
+  }
+
+  [data-slot="sidebar"],
+  [data-sidebar="sidebar"] {
+    background-image: linear-gradient(to bottom, var(--sidebar-gradient-from), var(--sidebar-gradient-to));
+  }
+
+  [data-sidebar="menu-button"][data-active="true"],
+  [data-sidebar="menu-sub-button"][data-active="true"] {
+    background-image: linear-gradient(to bottom right, var(--sidebar-primary-gradient-from), var(--sidebar-primary-gradient-to)) !important;
+  }
+
+  .bg-primary {
+    background-image: linear-gradient(to bottom right, var(--primary-gradient-from), var(--primary-gradient-to));
+  }
+
+  .bg-secondary {
+    background-image: linear-gradient(to bottom right, var(--secondary-gradient-from), var(--secondary-gradient-to));
+  }
+
+  .bg-accent {
+    background-image: linear-gradient(to bottom right, var(--accent-gradient-from), var(--accent-gradient-to));
+  }
+}
+
+/* Add browser scrollbar styling */
+@layer utilities {
+  /* Webkit browsers (Chrome, Safari, newer Edge) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 9999px;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+  }
+}
+
