@@ -511,12 +511,12 @@ defineProps<{
                         <div class="relative w-full pb-[100%] mb-4">
                             <div class="absolute inset-0 rounded-full overflow-hidden border-2 border-indigo-600 p-1 dark:border-indigo-500 group-hover:border-indigo-700 dark:group-hover:border-indigo-400 transition-colors">
                                 <img 
-                                    :src="artist.profilePhoto || '/api/placeholder/200/200'" 
+                                    :src="artist.profilePhoto || '/images/placeholder-artist.jpg'" 
                                     :alt="artist.name" 
                                     class="w-full h-full object-cover"
                                     @error="(e: Event) => {
                                         const target = e.target as HTMLImageElement;
-                                        if (target) target.src = '/api/placeholder/200/200';
+                                        if (target) target.src = '/images/placeholder-artist.jpg';
                                     }"
                                 >
                             </div>
